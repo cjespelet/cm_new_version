@@ -1,0 +1,41 @@
+mat-list{
+    min-height: 100%;
+    background-color: rgba(26, 27, 29, 0.6);
+    mat-list-item {
+        color: white;
+        font-weight: bold;
+        span{
+            font-size: 14px;
+            cursor: pointer;
+            color: white;
+        } 
+        a{
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }  
+        a.active {
+            color: white;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.3);
+        }     
+    }
+    mat-list-item:hover {
+        color: white;
+        font-weight: bold;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+    mat-list-item.active {
+        color: white;
+        font-weight: bold;
+        background-color: rgba(0, 0, 0, 0.3);
+    }  
+    
+    .separator {
+        width: 90%;
+        border-top: 1px solid rgba(0, 0, 0, 0.2);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        height: 0px;
+        margin: 3px 5%;
+    }
+}

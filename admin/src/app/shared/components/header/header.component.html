@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+    <ng-container *ngIf="!isLogged; else viewLogout">
+        <span>{{'MY_APP' | translate}}</span>
+        <span class="spacer"></span>
+        <!-- <div>
+            <a mat-button 
+            routerLink="/login" 
+            >Login</a>            
+        </div> -->
+    </ng-container>
+    <!-- <button (click)="isAdmin = !isAdmin">Change</button> -->
+</mat-toolbar>
+
+
+
+<ng-template #viewLogout>
+    <button mat-icon-button (click)="onToggleSidenav()">
+        <mat-icon>menu</mat-icon>        
+    </button>
+    <span class="spacer"></span>
+
+    <span>{{username}}</span>    
+    <a mat-button (click)="onLogout()" >Logout</a>
+</ng-template>
