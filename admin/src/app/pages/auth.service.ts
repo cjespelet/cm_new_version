@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User, UserResponse } from '@app/shared/models/user.interface';
 import { catchError, Observable,map, throwError, BehaviorSubject } from 'rxjs';
@@ -25,7 +25,10 @@ export class AuthService {
   }
 
   login(authData:User) : Observable<UserResponse | void> {
-    return this.http.post<UserResponse>(`${environment.API_URL}/users/adminLogin`,authData)
+    let option = {
+      headers : new HttpHeaders({ 'app-codename': 'AEH-ADMIN', 'Referer' : 'aeh-admin.woow.no', 'origin' : 'https://aeh-admin.woow.no' })
+    }
+    return this.http.post<UserResponse>(`${environment.API_URL}/users/adminLogin`,authData, option)
     .pipe(
       map((res:UserResponse)=>{
         this.saveToken(res)

@@ -1,0 +1,50 @@
+.contentForm{
+  display: grid;
+  align-items: left;
+  text-align: left;  
+  width: 100%;
+  .container{
+    border-bottom: 1px solid rgba(128,128,128,0.48);
+    margin: 5%;
+    width: 90%;
+
+    .separator{
+      border-bottom: 1px solid #dcdcdc;
+      margin-bottom: 30px;
+    }
+  
+    .form-group{
+      padding: 20px 0;
+      label{
+        min-width: 200px;
+        float: left;
+        text-align: right;
+        padding: 10px;
+      }   
+    }
+
+    .formItems{
+      grid-row: 1;
+      text-align: center;
+      button{
+        float: left;
+      }    
+    } 
+
+    .mat-radio-label-content {
+      min-width: 100px;
+    }
+    
+  }
+  .button-containers{
+    margin: 0 5% 5% 5% ;
+    width: 90%;
+    .formItemsButtons {
+      text-align: center; 
+      width: 100%;
+      padding-left: 200px;
+    } 
+  }
+   
+   
+}

@@ -1,0 +1,125 @@
+<div class="contentForm">
+    <form (ngSubmit)="onSubmit()"  [formGroup]="contactForm" >
+        <div class="container">
+        
+            <div class="form-group separator" *ngIf="userInfo !== undefined">
+                <label>{{'USER_CATEGORY' | translate}}: </label>
+                <mat-form-field appearance="outline">
+                    <mat-select [(value)]="categorySelected" >
+                        <mat-option *ngFor="let category of userInfo.categories" [value]="category">
+                        {{category.title}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-hint>{{'ADMIN_DESCRIPTION' | translate}}</mat-hint>
+                </mat-form-field>
+            </div>
+            
+            <div class="form-group separator" *ngIf="userInfo !== undefined && categorySelected.title == 'Salgsansvarlig'">
+                <label>{{'USER_CATEGORY' | translate}}: </label>
+                <mat-form-field appearance="outline">
+                    <mat-select [(value)]="agencySelected">
+                        <mat-option *ngFor="let agency of userInfo.agencies" [value]="agency">
+                        {{agency.title}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-hint>{{'ADMIN_DESCRIPTION' | translate}}</mat-hint>
+                </mat-form-field>
+            </div>
+
+            <div class="form-group separator" *ngIf="userInfo !== undefined && categorySelected.title == 'Selger'">
+                <label>{{'USER_CATEGORY' | translate}}: </label>
+                <mat-form-field appearance="outline">
+                    <mat-select [(value)]="agencySelected">
+                        <mat-option *ngFor="let agency of userInfo.agencies" [value]="agency">
+                        {{agency.title}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-hint>{{'ADMIN_DESCRIPTION' | translate}}</mat-hint>
+                </mat-form-field>
+            </div>
+
+            <div class="form-group separator" *ngIf="userInfo !== undefined && categorySelected.title == 'KioskAnsvarlig'">
+                <label>{{'KIOSK' | translate}}: </label>
+                <mat-form-field appearance="outline">
+                    <mat-select [(value)]="kioskSelected">
+                        <mat-option *ngFor="let kiosk of userInfo.kiosks" [value]="kiosk">
+                        {{kiosk.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-hint>{{'ADMIN_DESCRIPTION' | translate}}</mat-hint>
+                </mat-form-field>
+            </div>
+
+            <div class="form-group separator" *ngIf="userInfo !== undefined && categorySelected.title == 'AnsvarligButikk'">
+                <label>{{'SHOPS' | translate}}: </label>
+                <mat-form-field appearance="outline">
+                    <mat-select [(value)]="shopSelected">
+                        <mat-option *ngFor="let shop of userInfo.shops" [value]="shop">
+                        {{shop.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-hint>{{'ADMIN_DESCRIPTION' | translate}}</mat-hint>
+                </mat-form-field>
+            </div>
+
+            <div class="form-group separator">
+                <label>{{'DISPLAY_NAME' | translate}}: </label>
+                <mat-form-field class="row" appearance="outline">
+                    <input matInput  id="name"   formControlName="name" required>
+                    <div mat-error *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['required']">This field is required</div>
+                    <div mat-error *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['minlength']">Name must be longer that {{contactForm.get('name')?.errors?.['minlength'].requiredLength}} characters</div>
+                    <mat-hint>Min. 4</mat-hint>
+                </mat-form-field>
+            </div>
+
+
+            <div class="form-group">
+                <label>{{'USERNAME' | translate}}: </label>
+                <mat-form-field class="row" appearance="outline">
+                    <input matInput  id="username"   formControlName="username" required>
+                    <div mat-error *ngIf="contactForm.get('username')?.touched && contactForm.get('username')?.errors?.['required']">This field is required</div>
+                    <div mat-error *ngIf="contactForm.get('username')?.touched && contactForm.get('username')?.errors?.['minlength']">Username must be longer that {{contactForm.get('username')?.errors?.['minlength'].requiredLength}} characters</div>
+                    <mat-hint>(A-z,0-9) Min. 5</mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="form-group ">
+                <label>{{'PASSWORD' | translate}}: </label>
+                <mat-form-field class="row" appearance="outline">
+                    <input matInput  id="password"   formControlName="password" required>
+                    <div mat-error *ngIf="contactForm.get('password')?.touched && contactForm.get('password')?.errors?.['required']">This field is required</div>
+                    <div mat-error *ngIf="contactForm.get('password')?.touched && contactForm.get('password')?.errors?.['minlength']">Password must be longer that {{contactForm.get('password')?.errors?.['minlength'].requiredLength}} characters</div>
+                    <mat-hint>(A-z,0-9,!,_,-,.) Min. 6</mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="form-group separator">
+                <label>{{'REPEAT_PASSWORD' | translate}}: </label>
+                <mat-form-field class="row" appearance="outline">
+                    <input matInput  id="repeatPassword"   formControlName="repeatPassword" required>
+                    <div mat-error *ngIf="contactForm.get('repeatPassword')?.touched && contactForm.get('repeatPassword')?.errors?.['required']">This field is required</div>
+                    <div mat-error *ngIf="contactForm.get('repeatPassword')?.touched && contactForm.get('repeatPassword')?.errors?.['minlength']">repeatPassword must be longer that {{contactForm.get('name')?.errors?.['minlength'].requiredLength}} characters</div>
+                    <mat-hint>(A-z,0-9,!,_,-,.) Min. 6</mat-hint>
+                </mat-form-field>
+            </div>
+
+            <div class="form-group ">
+                <label> </label>
+                <mat-radio-group aria-label="Select an option" formControlName="enabled">
+                    <mat-radio-button value="true">{{'ENABLED' | translate}}</mat-radio-button>
+                    <mat-radio-button value="false">{{'INACTIVE' | translate}}</mat-radio-button>
+                </mat-radio-group>
+                
+            </div>
+        </div>
+        <div class="button-containers">
+            <div class="formItemsButtons">
+                <!-- <button type="submit" class="btn btn-info btn-lg" [disabled]="contactForm.invalid">Send</button> -->
+                <app-button [data]="definitionButton"></app-button>
+                <app-button [data]="definitionButtonCancel"></app-button>
+            </div>
+        </div>
+        
+    
+    </form>
+    
+</div>
+

@@ -1,0 +1,6 @@
+<!-- <button {{dataSource.type}} color="primary">{{dataSource.text}}</button> -->
+<button (click)="executeAction(dataSource)" class="{{dataSource.class}}" type="{{dataSource.typeButton}}" *ngIf="dataSource.type == 'mat-raised-button'" mat-raised-button color="{{dataSource.color}}" disabled="{{dataSource.disabled}}"   >{{dataSource.text}}</button>
+
+<button *ngIf="dataSource.type == 'mat-icon-button'" mat-icon-button color="{{dataSource.color}}" class="{{dataSource.class}}" aria-label="Edit user">
+    <mat-icon>{{dataSource.text}}</mat-icon>
+</button>

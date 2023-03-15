@@ -3,9 +3,13 @@ mat-sidenav {
 }
 
 mat-sidenav-content {
-    background-color: #f9fbfb;
+    background-color: #ffffff;
 }
 
 mat-sidenav-container {
     height: 100%;
+}
+
+.mat-toolbar.mat-primary{
+    background-color: #f1f1f1;
 }

@@ -24,7 +24,8 @@ export class AppComponent {
 
   setAppLanguage() {
     this.translate.setDefaultLang('no');
-    // this.translate.use(this.translate.getBrowserLang())
+    this.translate.use('no')
+    // this.translate.use(this.translate.getBrowserLang(''))
   }
 
 }

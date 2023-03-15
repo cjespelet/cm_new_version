@@ -1,0 +1,21 @@
+  table {
+    width: 90%;
+    margin: 0 5%;   
+  }
+  .mat-paginator {
+    width: 90%;
+    margin: 0 5%; 
+  }
+
+  section {
+    display: grid;
+    grid-template-columns: 100%;
+    width: 90%;
+    margin: 0 5%;
+  }
+  .example-button-row {
+    padding: 20px 0;
+    button{
+      float: right;
+    }
+  }

@@ -75,7 +75,8 @@
               "browserTarget": "admin:build:production"
             },
             "development": {
-              "browserTarget": "admin:build:development"
+              "browserTarget": "admin:build:development",
+              "disableHostCheck": true
             }
           },
           "defaultConfiguration": "development"
